@@ -40,12 +40,13 @@ class AccountInvoice(models.Model):
 
     @api.onchange('team_id')
     def onchange_team_id(self):
+        print('tttttttt')
         # fiscal position empty on the start
         position_id = False
 
         # if the partner has a fiscal position and the invoice a team
         if self.partner_id and self.partner_id.property_account_position_id and self.team_id:
-
+            print('tteeeeeeeeee')
             # if there is a country on the fiscal position of the partner, we search the fiscal position corresponding with the correct team
             if self.partner_id.property_account_position_id.country_id:
                 position_id = self.env['account.fiscal.position'].search(
