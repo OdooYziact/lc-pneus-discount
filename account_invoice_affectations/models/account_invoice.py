@@ -14,7 +14,7 @@ class AccountInvoice(models.Model):
 
         # if the partner has a fiscal position and the invoice a team
         if self.partner_id and self.partner_id.property_account_position_id and self.team_id:
-
+            print('et là')
             # if there is a country on the fiscal position of the partner, we search the fiscal position corresponding with the correct team
             if self.partner_id.property_account_position_id.country_id:
                 position_id = self.env['account.fiscal.position'].search([('country_id.id', '=', self.partner_id.property_account_position_id.country_id.id),('team_id.id', '=', self.team_id.id)], limit=1)
