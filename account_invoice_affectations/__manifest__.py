@@ -29,6 +29,7 @@
         'account',
         'crm',
         'sales_team',
+        'sale',
     ],
 
     # always loaded
