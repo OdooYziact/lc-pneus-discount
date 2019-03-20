@@ -7,6 +7,8 @@ class AccountInvoice(models.Model):
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):
+        print('on_change ici')
+
         # fiscal position empty on the start
         position_id = False
 
