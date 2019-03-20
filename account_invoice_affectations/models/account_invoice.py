@@ -5,8 +5,10 @@ from odoo import models, fields, api
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    @api.onchange('partner_id')
-    def onchange_partner_id(self):
+    @api.onchange('partner_id', 'company_id')
+    def _onchange_partner_id(self):
+        res = super(AccountInvoice, self)._onchange_partner_id()
+
         # fiscal position empty on the start
         position_id = False
 
@@ -34,6 +36,8 @@ class AccountInvoice(models.Model):
                 if account.account_src_id.id == self.account_id.id:
                     self.account_id = account.account_dest_id.id
                     break
+
+        return res
 
 
     @api.onchange('team_id')
